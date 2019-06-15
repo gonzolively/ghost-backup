@@ -48,8 +48,8 @@ def dump_db():
         )
 
 def pack_files():
-    compress_command = 'tar -C {0} -cvzf {1}.tar.gz {1}.sql'.format(
-        config['dump_path'], config['timestamp'])
+    compress_command = 'tar -C {0} -cvzf {1}-{2}.tar.gz {2}.sql'.format(
+        config['dump_path'], config['app_name'], config['timestamp'])
 
     if config['images']:
         compress_command += ' images'
@@ -77,7 +77,7 @@ def upload_files():
     )
     drive = build('drive', 'v3', credentials=credentials)
 
-    media = MediaFileUpload('{0}-{1}.tar.gz'.format(config['app_name','timestamp']))
+    media = MediaFileUpload('{0}-{1}.tar.gz'.format(config['app_name'], config['timestamp']))
     file_metadata = {
         'name': ( '{app_name}' + '-' + config['timestamp'] + '.tar.gz').format(**config),
         'mimeType': 'application/gzip'
