@@ -77,7 +77,7 @@ def upload_files():
     )
     drive = build('drive', 'v3', credentials=credentials)
 
-    media = MediaFileUpload('{0}.tar.gz'.format(config['timestamp']))
+    media = MediaFileUpload('{0}-{1}.tar.gz'.format(config['app_name','timestamp']))
     file_metadata = {
         'name': ( '{app_name}' + '-' + config['timestamp'] + '.tar.gz').format(**config),
         'mimeType': 'application/gzip'
