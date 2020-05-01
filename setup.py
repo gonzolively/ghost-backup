@@ -16,7 +16,7 @@ from misc import (
 
 backup_options = {}
 
-def display_yn_prompt(prompt_msg, prompt_type, default_value='N', save=True):
+def display_yn_prompt(prompt_msg, prompt_type, default_value='Y', save=True):
     while(1):
         print("\n{0}".format(prompt_msg))
         display_msg('Y/N', 'options')
@@ -253,6 +253,12 @@ def write_config():
     config_file.close()
 
 def main():
+    
+    display_msg('\nInstalling required packages, please wait...', None, '')
+
+    install_package("google-api-python-client python-crontab "
+                    "google-auth-httplib2 google-auth-oauthlib google-auth")
+    
     display_msg("\nGhost Backup Setup Wizard\n"
                 "-------------------------", 'bold')
 
@@ -274,10 +280,6 @@ def main():
     display_input_prompt('\nMySQL password')
     display_input_prompt('\nMySQL DB name')
 
-    display_msg('\nPlease wait to complete requirements download...', None, '')
-
-    install_package("google-api-python-client python-crontab "
-                    "google-auth-httplib2 google-auth-oauthlib google-auth")
     setup_gdrive()
     copy_files()
     setup_cron()
