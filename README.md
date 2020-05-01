@@ -1,6 +1,6 @@
 # Ghost Backup
 
-Python package to setup automatic backup for your Ghost blog. It uses Google Drive as backup host & Telegram for notification purpose. It has interactive CLI with on screen instructions. This module will backup you blog DB, but you can also opt to backup your images & themes.
+Python package to setup automatic backup for your Ghost blog. It uses Google Drive as backup host & Telegram for notification purpose. It has interactive CLI with on screen instructions. This script will automate the entire backup of your Ghost blog. By default, this script will set up the backup job to run every night at midnight. 
 
 ## Prerequisites
 * python3
